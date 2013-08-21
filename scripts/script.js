@@ -77,7 +77,7 @@ function Game(){
 		}else if(dealerScore < playerScore){
 			return 'Player wins';	
 		}else{
-			return 'Dealer and Player Tie';	
+			return 'Dealer and Player tie';	
 		}	
 	}
 
