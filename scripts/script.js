@@ -143,7 +143,7 @@ function Dealer(){
 		var aces = 0;
 		while(points < 17){
 			var newCard = this.dealCard();
-			if(newCard[0] === 'a'){
+			if(newCard[0] === 'A'){
 				aces++;
 			}
 			dealerHand.push(newCard);
