@@ -143,7 +143,7 @@ function Dealer(){
 		var aces = 0;
 		while(points < 17){
 			var newCard = this.dealCard();
-			if(newCard[0] === 'A'){
+			if(newCard[0] === 'a'){
 				aces++;
 			}
 			dealerHand.push(newCard);
@@ -214,22 +214,19 @@ function outputHand(hand){
 
 function calculatePoints(hand){
 	var thePoints = 0;
+	var aces = 0;
 	for(i = 0; i < hand.length; i++){
-			thePoints = thePoints + hand[i][2];	
+			thePoints = thePoints + hand[i][2];
+			if(hand[i][0] === 'A'){
+				aces++;	
+			};
+			//alert(aces);		
+	}
+	while(thePoints > 21 && aces > 0){
+				thePoints = thePoints - 10;
+				aces--;	
 	}
 	return thePoints;	
 } // End calculatePoints function
-
-
-
-
-
-
-
-
-
-
-
-
 
 
