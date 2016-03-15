@@ -32,8 +32,8 @@ $btnGetCard.click(function(){
 		if(playerPoints > 21){
 			gameEnd = true;
 			alert('You went over 21. Dealer wins');	
-		};
-	};
+		}
+	}
 });
 
 $btnHold.click(function(){
@@ -68,7 +68,7 @@ function Game(){
 		player.getHand();
 		playerHold = false;
 		gameEnd = false;
-	}
+	};
 	this.checkWin = function(){
 		dealerScore = dealer.getPoints();
 		playerScore = player.getPoints();
@@ -79,16 +79,17 @@ function Game(){
 		}else{
 			return 'Dealer and Player tie';	
 		}	
-	}
+	};
 
 } // End Game Object
 
 // Cards Object
 function Cards(){
 	var theDeck = [];
+	var adjustedI;
 	theDeck[0] = [null, null, null];
 	this.createDeck = function(){
-		for(i = 0; i < 53; i++){
+		for(var i = 0; i < 53; i++){
 			if(i > 0 && i < 14){
 				createSuit(i, 'C');
 			}else if(i > 13 && i < 27){
@@ -124,9 +125,9 @@ function Cards(){
 				theDeck.push(['K', suit, 10]);	
 			}	
 		}	
-	};
+	}
 
-}; // End Card Object
+} // End Card Object
 
 // Dealer Object
 function Dealer(){
@@ -137,7 +138,7 @@ function Dealer(){
 	this.dealCard = function(){
 		card = cards.getCard(deck);
 		return card;				
-	}
+	};
 	this.playDealerRound = function(){
 		$handDealerOut.text(' ');
 		var aces = 0;
@@ -152,27 +153,27 @@ function Dealer(){
 				points = points - 10;
 				aces--;	
 			}
-		};
+		}
 		$handDealerOut.text(function(){
 			return outputHand(dealerHand);
 		});
 		$scoreDealerOut.text('Dealer score = ' + points);
 		return points;	
-	}
+	};
 	
 	this.dealPlayerHand = function(){
-		for(i = 1; i < 3; i++){
+		for(var i = 1; i < 3; i++){
 			var card = this.dealCard();
 			playerHand.push(card);	
 		}
 		return playerHand;	
-	}
+	};
 	
 	this.getPoints = function(){
 		return points;	
-	}
+	};
 		
-}; // End Dealer Object 
+} // End Dealer Object 
 
 function Player(){
 	var playerHand = [];
@@ -184,7 +185,7 @@ function Player(){
 		});
 		points = calculatePoints(playerHand);
 		$scorePlayerOut.text('Player score = ' + points);	
-	}
+	};
 	this.getCard = function(){
 		var newCard = dealer.dealCard();
 		playerHand.push(newCard);
@@ -199,14 +200,14 @@ function Player(){
 	};
 	this.getPoints = function(){
 		return points;	
-	}
+	};
 	
 } // End Player Object
 
 // General Functions
 function outputHand(hand){
 	var str = '';
-	for(i = 0; i < hand.length; i++){
+	for(var i = 0; i < hand.length; i++){
 		str += hand[i][0] + hand[i][1] + ' ';	
 	}
 	return str;		
@@ -215,11 +216,11 @@ function outputHand(hand){
 function calculatePoints(hand){
 	var thePoints = 0;
 	var aces = 0;
-	for(i = 0; i < hand.length; i++){
+	for(var i = 0; i < hand.length; i++){
 			thePoints = thePoints + hand[i][2];
 			if(hand[i][0] === 'A'){
 				aces++;	
-			};
+			}
 			//alert(aces);		
 	}
 	while(thePoints > 21 && aces > 0){
@@ -228,17 +229,3 @@ function calculatePoints(hand){
 	}
 	return thePoints;	
 } // End calculatePoints function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
