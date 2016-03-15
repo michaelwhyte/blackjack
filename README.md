@@ -1,4 +1,4 @@
-blackjack
+Blackjack
 =========
 
 HTML/CSS/JS Blackjack game
